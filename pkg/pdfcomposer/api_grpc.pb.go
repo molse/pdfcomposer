@@ -47,8 +47,8 @@ func (c *pdfComposeServiceClient) SendFile(ctx context.Context, opts ...grpc.Cal
 }
 
 type PdfComposeService_SendFileClient interface {
-	Send(*Images) error
-	CloseAndRecv() (*Pdf, error)
+	Send(*FileRequest) error
+	CloseAndRecv() (*FileResponse, error)
 	grpc.ClientStream
 }
 
@@ -56,15 +56,15 @@ type pdfComposeServiceSendFileClient struct {
 	grpc.ClientStream
 }
 
-func (x *pdfComposeServiceSendFileClient) Send(m *Images) error {
+func (x *pdfComposeServiceSendFileClient) Send(m *FileRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *pdfComposeServiceSendFileClient) CloseAndRecv() (*Pdf, error) {
+func (x *pdfComposeServiceSendFileClient) CloseAndRecv() (*FileResponse, error) {
 	if err := x.ClientStream.CloseSend(); err != nil {
 		return nil, err
 	}
-	m := new(Pdf)
+	m := new(FileResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -108,8 +108,8 @@ func _PdfComposeService_SendFile_Handler(srv interface{}, stream grpc.ServerStre
 }
 
 type PdfComposeService_SendFileServer interface {
-	SendAndClose(*Pdf) error
-	Recv() (*Images, error)
+	SendAndClose(*FileResponse) error
+	Recv() (*FileRequest, error)
 	grpc.ServerStream
 }
 
@@ -117,12 +117,12 @@ type pdfComposeServiceSendFileServer struct {
 	grpc.ServerStream
 }
 
-func (x *pdfComposeServiceSendFileServer) SendAndClose(m *Pdf) error {
+func (x *pdfComposeServiceSendFileServer) SendAndClose(m *FileResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *pdfComposeServiceSendFileServer) Recv() (*Images, error) {
-	m := new(Images)
+func (x *pdfComposeServiceSendFileServer) Recv() (*FileRequest, error) {
+	m := new(FileRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}

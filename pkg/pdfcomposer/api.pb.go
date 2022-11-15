@@ -20,78 +20,78 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Pdf struct {
-	File                 []byte   `protobuf:"bytes,1,opt,name=File,proto3" json:"File,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *Pdf) Reset()         { *m = Pdf{} }
-func (m *Pdf) String() string { return proto.CompactTextString(m) }
-func (*Pdf) ProtoMessage()    {}
-func (*Pdf) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9ffe71976e461794, []int{0}
-}
-
-func (m *Pdf) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Pdf.Unmarshal(m, b)
-}
-func (m *Pdf) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Pdf.Marshal(b, m, deterministic)
-}
-func (m *Pdf) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Pdf.Merge(m, src)
-}
-func (m *Pdf) XXX_Size() int {
-	return xxx_messageInfo_Pdf.Size(m)
-}
-func (m *Pdf) XXX_DiscardUnknown() {
-	xxx_messageInfo_Pdf.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Pdf proto.InternalMessageInfo
-
-func (m *Pdf) GetFile() []byte {
-	if m != nil {
-		return m.File
-	}
-	return nil
-}
-
-type Images struct {
+type FileResponse struct {
 	Chunk                []byte   `protobuf:"bytes,1,opt,name=chunk,proto3" json:"chunk,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Images) Reset()         { *m = Images{} }
-func (m *Images) String() string { return proto.CompactTextString(m) }
-func (*Images) ProtoMessage()    {}
-func (*Images) Descriptor() ([]byte, []int) {
+func (m *FileResponse) Reset()         { *m = FileResponse{} }
+func (m *FileResponse) String() string { return proto.CompactTextString(m) }
+func (*FileResponse) ProtoMessage()    {}
+func (*FileResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9ffe71976e461794, []int{0}
+}
+
+func (m *FileResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FileResponse.Unmarshal(m, b)
+}
+func (m *FileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FileResponse.Marshal(b, m, deterministic)
+}
+func (m *FileResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FileResponse.Merge(m, src)
+}
+func (m *FileResponse) XXX_Size() int {
+	return xxx_messageInfo_FileResponse.Size(m)
+}
+func (m *FileResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_FileResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_FileResponse proto.InternalMessageInfo
+
+func (m *FileResponse) GetChunk() []byte {
+	if m != nil {
+		return m.Chunk
+	}
+	return nil
+}
+
+type FileRequest struct {
+	Chunk                []byte   `protobuf:"bytes,1,opt,name=chunk,proto3" json:"chunk,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *FileRequest) Reset()         { *m = FileRequest{} }
+func (m *FileRequest) String() string { return proto.CompactTextString(m) }
+func (*FileRequest) ProtoMessage()    {}
+func (*FileRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9ffe71976e461794, []int{1}
 }
 
-func (m *Images) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Images.Unmarshal(m, b)
+func (m *FileRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FileRequest.Unmarshal(m, b)
 }
-func (m *Images) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Images.Marshal(b, m, deterministic)
+func (m *FileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FileRequest.Marshal(b, m, deterministic)
 }
-func (m *Images) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Images.Merge(m, src)
+func (m *FileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FileRequest.Merge(m, src)
 }
-func (m *Images) XXX_Size() int {
-	return xxx_messageInfo_Images.Size(m)
+func (m *FileRequest) XXX_Size() int {
+	return xxx_messageInfo_FileRequest.Size(m)
 }
-func (m *Images) XXX_DiscardUnknown() {
-	xxx_messageInfo_Images.DiscardUnknown(m)
+func (m *FileRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_FileRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Images proto.InternalMessageInfo
+var xxx_messageInfo_FileRequest proto.InternalMessageInfo
 
-func (m *Images) GetChunk() []byte {
+func (m *FileRequest) GetChunk() []byte {
 	if m != nil {
 		return m.Chunk
 	}
@@ -99,8 +99,8 @@ func (m *Images) GetChunk() []byte {
 }
 
 func init() {
-	proto.RegisterType((*Pdf)(nil), "pdfcompose.Pdf")
-	proto.RegisterType((*Images)(nil), "pdfcompose.Images")
+	proto.RegisterType((*FileResponse)(nil), "pdfcompose.FileResponse")
+	proto.RegisterType((*FileRequest)(nil), "pdfcompose.FileRequest")
 }
 
 func init() { proto.RegisterFile("server/api/api.proto", fileDescriptor_9ffe71976e461794) }
@@ -109,13 +109,13 @@ var fileDescriptor_9ffe71976e461794 = []byte{
 	// 165 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x29, 0x4e, 0x2d, 0x2a,
 	0x4b, 0x2d, 0xd2, 0x4f, 0x2c, 0xc8, 0x04, 0x61, 0xbd, 0x82, 0xa2, 0xfc, 0x92, 0x7c, 0x21, 0xae,
-	0x82, 0x94, 0xb4, 0xe4, 0xfc, 0xdc, 0x82, 0xfc, 0xe2, 0x54, 0x25, 0x49, 0x2e, 0xe6, 0x80, 0x94,
-	0x34, 0x21, 0x21, 0x2e, 0x16, 0xb7, 0xcc, 0x9c, 0x54, 0x09, 0x46, 0x05, 0x46, 0x0d, 0x9e, 0x20,
-	0x30, 0x5b, 0x49, 0x8e, 0x8b, 0xcd, 0x33, 0x37, 0x31, 0x3d, 0xb5, 0x58, 0x48, 0x84, 0x8b, 0x35,
-	0x39, 0xa3, 0x34, 0x2f, 0x1b, 0x2a, 0x0d, 0xe1, 0x18, 0x79, 0x70, 0x09, 0x06, 0xa4, 0xa4, 0x39,
-	0x43, 0x0c, 0x0a, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0x15, 0x32, 0xe6, 0xe2, 0x08, 0x4e, 0xcd,
-	0x4b, 0x01, 0x19, 0x20, 0x24, 0xa4, 0x87, 0xb0, 0x48, 0x0f, 0x62, 0x94, 0x14, 0x3f, 0xb2, 0x58,
-	0x40, 0x4a, 0x9a, 0x12, 0x83, 0x06, 0xa3, 0x93, 0x60, 0x14, 0x7f, 0x41, 0x76, 0xba, 0x3e, 0x42,
-	0xa6, 0x28, 0x89, 0x0d, 0xec, 0x54, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xf5, 0x26, 0xc2,
-	0x80, 0xc2, 0x00, 0x00, 0x00,
+	0x82, 0x94, 0xb4, 0xe4, 0xfc, 0xdc, 0x82, 0xfc, 0xe2, 0x54, 0x25, 0x15, 0x2e, 0x1e, 0xb7, 0xcc,
+	0x9c, 0xd4, 0xa0, 0xd4, 0xe2, 0x82, 0xfc, 0xbc, 0xe2, 0x54, 0x21, 0x11, 0x2e, 0xd6, 0xe4, 0x8c,
+	0xd2, 0xbc, 0x6c, 0x09, 0x46, 0x05, 0x46, 0x0d, 0x9e, 0x20, 0x08, 0x47, 0x49, 0x99, 0x8b, 0x1b,
+	0xa2, 0xaa, 0xb0, 0x34, 0xb5, 0xb8, 0x04, 0xbb, 0x22, 0xa3, 0x30, 0x2e, 0xc1, 0x80, 0x94, 0x34,
+	0x67, 0x88, 0xc1, 0xc1, 0xa9, 0x45, 0x65, 0x99, 0xc9, 0xa9, 0x42, 0x8e, 0x5c, 0x1c, 0xc1, 0xa9,
+	0x79, 0x29, 0x20, 0xdd, 0x42, 0xe2, 0x7a, 0x08, 0x8b, 0xf5, 0x90, 0xcc, 0x93, 0x92, 0xc0, 0x94,
+	0x80, 0x38, 0x47, 0x89, 0x41, 0x83, 0xd1, 0x49, 0x30, 0x8a, 0xbf, 0x20, 0x3b, 0x5d, 0x1f, 0xa1,
+	0xa4, 0x28, 0x89, 0x0d, 0xec, 0x11, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xe4, 0x3b, 0x8a,
+	0xf7, 0xe0, 0x00, 0x00, 0x00,
 }
